@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://cliusx35q73un"]
+
+[ext_resource type="Script" uid="uid://68bgqrf117t7" path="res://Scripts/web_manager.gd" id="1_d0liu"]
+[ext_resource type="Script" uid="uid://ip7im8jp7bfv" path="res://Scripts/check.gd" id="2_uotpk"]
+[ext_resource type="Script" uid="uid://bbg6ymhobhh3w" path="res://Scripts/close_collision.gd" id="3_q7kol"]
+
+[node name="WebManager" type="Node2D"]
+script = ExtResource("1_d0liu")
+
+[node name="Check" type="Area2D" parent="."]
+script = ExtResource("2_uotpk")
+
+[node name="Collision" type="CollisionPolygon2D" parent="Check"]
+script = ExtResource("3_q7kol")

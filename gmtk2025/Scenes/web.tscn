@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://cni0tl7sgn3ou"]
+
+[ext_resource type="Script" path="res://Scripts/web.gd" id="1_gmghx"]
+[ext_resource type="Script" path="res://Scripts/post_detection.gd" id="2_jdm1v"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gmghx"]
+radius = 1.0
+
+[node name="Web" type="Node2D" groups=["Web"]]
+script = ExtResource("1_gmghx")
+
+[node name="Line_Area" type="Area2D" parent="."]
+
+[node name="Collision" type="CollisionPolygon2D" parent="Line_Area"]
+polygon = PackedVector2Array(-10, -10, -10, 10, 10, 10, 10, -10)
+
+[node name="Line" type="Line2D" parent="."]
+width = 1.0
+default_color = Color(0.823529, 1, 1, 1)
+
+[node name="Start_Area" type="Area2D" parent="."]
+scale = Vector2(5, 5)
+script = ExtResource("2_jdm1v")
+
+[node name="Sprite" type="Polygon2D" parent="Start_Area"]
+polygon = PackedVector2Array(-1, 0, 0, 1, 1, 0, 0, -1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Start_Area"]
+shape = SubResource("CircleShape2D_gmghx")
+
+[node name="End_Area" type="Area2D" parent="."]
+scale = Vector2(5, 5)
+script = ExtResource("2_jdm1v")
+
+[node name="Sprite" type="Polygon2D" parent="End_Area"]
+polygon = PackedVector2Array(-1, 0, 0, 1, 1, 0, 0, -1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="End_Area"]
+shape = SubResource("CircleShape2D_gmghx")
+
+[node name="Broke" type="AudioStreamPlayer2D" parent="."]

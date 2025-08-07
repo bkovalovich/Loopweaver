@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://ckgeodxaxagj2"]
+
+[ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_1f0kj"]
+[ext_resource type="Texture2D" uid="uid://bjk4ssasunara" path="res://Textures/Bugoid.png" id="2_afpow"]
+[ext_resource type="AudioStream" uid="uid://crc7groi4aff5" path="res://Sounds/berp.wav" id="3_k7saa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_afpow"]
+size = Vector2(12, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1f0kj"]
+
+[node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
+position = Vector2(1, 0)
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_1f0kj")
+enemyHealth = 1.0
+enemySpeed = 200.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(-1, -1)
+texture = ExtResource("2_afpow")
+
+[node name="Area" type="Area2D" parent="."]
+
+[node name="Hitbox" type="CollisionShape2D" parent="Area"]
+position = Vector2(8, 0)
+shape = SubResource("RectangleShape2D_afpow")
+
+[node name="Hurtbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1f0kj")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="Spawn" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_k7saa")

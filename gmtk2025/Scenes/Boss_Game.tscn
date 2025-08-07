@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=3 uid="uid://rfqer114py6q"]
+
+[ext_resource type="Script" path="res://Scripts/game.gd" id="1_b2bpf"]
+[ext_resource type="PackedScene" uid="uid://ccn8d3xd2l51f" path="res://Scenes/player.tscn" id="1_iukft"]
+[ext_resource type="PackedScene" uid="uid://cliusx35q73un" path="res://Scenes/web_manager.tscn" id="2_b2bpf"]
+[ext_resource type="PackedScene" uid="uid://dfla604iure2h" path="res://Scenes/wall.tscn" id="4_kldst"]
+[ext_resource type="PackedScene" uid="uid://crnl8at305due" path="res://Scenes/boss.tscn" id="5_8ov1d"]
+[ext_resource type="AudioStream" uid="uid://dmri41owcxroh" path="res://Sounds/success.wav" id="6_o75qw"]
+
+[node name="Game" type="Node2D" node_paths=PackedStringArray("player", "win_cons")]
+script = ExtResource("1_b2bpf")
+player = NodePath("Player")
+margin = 10.0
+win_cons = [NodePath("Boss")]
+
+[node name="WebManager" parent="." instance=ExtResource("2_b2bpf")]
+
+[node name="Player" parent="." node_paths=PackedStringArray("web") instance=ExtResource("1_iukft")]
+position = Vector2(576, 320)
+scale = Vector2(3, 3)
+movement_speed = 5000.0
+web = NodePath("../WebManager")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+
+[node name="Wall" parent="." instance=ExtResource("4_kldst")]
+position = Vector2(584, 652)
+scale = Vector2(600, 1)
+
+[node name="Wall2" parent="." instance=ExtResource("4_kldst")]
+position = Vector2(579, 2)
+scale = Vector2(600, 1)
+
+[node name="Wall3" parent="." instance=ExtResource("4_kldst")]
+position = Vector2(-1, 325)
+scale = Vector2(1, 350)
+
+[node name="Wall4" parent="." instance=ExtResource("4_kldst")]
+position = Vector2(1153, 322)
+scale = Vector2(1, 350)
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="Boss" parent="." instance=ExtResource("5_8ov1d")]
+position = Vector2(343, 325)
+speed = 1000.0
+
+[node name="LevelText" type="TextEdit" parent="."]
+offset_left = 6.0
+offset_top = 597.0
+offset_right = 151.0
+offset_bottom = 653.0
+theme_override_constants/caret_width = 0
+
+[node name="Success" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_o75qw")

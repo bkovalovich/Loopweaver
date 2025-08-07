@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://i88wvgr8dylc"]
+
+[ext_resource type="Script" path="res://Scenes/vfx.gd" id="1_mc11d"]
+[ext_resource type="AudioStream" uid="uid://crc7groi4aff5" path="res://Sounds/berp.wav" id="2_kouh3"]
+
+[sub_resource type="Curve" id="Curve_xhfhl"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="VFX_Explosion" type="Node2D"]
+script = ExtResource("1_mc11d")
+
+[node name="Particles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 15
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_xhfhl")
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_kouh3")
+autoplay = true

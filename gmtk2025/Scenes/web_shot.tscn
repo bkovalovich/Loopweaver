@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2nkfgqprfkxk"]
+
+[ext_resource type="Script" path="res://Scripts/web_shot.gd" id="1_efc1c"]
+[ext_resource type="Texture2D" uid="uid://x8mggava8na4" path="res://Textures/WebShoot.png" id="2_k1lc2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_04ypy"]
+radius = 6.0
+
+[node name="WebShot" type="CharacterBody2D"]
+script = ExtResource("1_efc1c")
+bullet_speed = 2000.0
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_k1lc2")
+
+[node name="Area" type="Area2D" parent="."]
+
+[node name="Collision" type="CollisionShape2D" parent="Area"]
+shape = SubResource("CircleShape2D_04ypy")

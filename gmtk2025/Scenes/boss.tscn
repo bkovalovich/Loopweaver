@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://crnl8at305due"]
+
+[ext_resource type="Script" path="res://Scripts/boss.gd" id="1_wwfse"]
+[ext_resource type="Texture2D" uid="uid://cdj4leghhrylq" path="res://Textures/Largebugoid.png" id="2_cxrok"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ukjjc"]
+radius = 16.0
+height = 42.0
+
+[node name="Boss" type="CharacterBody2D" groups=["WinCon"]]
+scale = Vector2(3, 3)
+script = ExtResource("1_wwfse")
+rotation_speed = 5.0
+speed = 5000.0
+
+[node name="Sprite" type="Sprite2D" parent="."]
+rotation = 4.71239
+texture = ExtResource("2_cxrok")
+
+[node name="Hurtbox" type="CollisionShape2D" parent="."]
+rotation = 4.71239
+shape = SubResource("CapsuleShape2D_ukjjc")
+
+[node name="Area" type="Area2D" parent="." groups=["WinCon"]]
+rotation = 4.71239
+
+[node name="Hitbox" type="CollisionShape2D" parent="Area"]
+shape = SubResource("CapsuleShape2D_ukjjc")
